@@ -29,12 +29,12 @@
         var reader = new FileReader();
 
         // Closure to capture the file information.
-        reader.onload = (function(theFile) {
-          return function(e) {
-            // Render thumbnail.
+        reader.onload = (function(theFile) {          //*Declaracion de la funcion (funcion que retorna una funcion)
+          return function(e) {                        //*la funcion retornada es el manejador del evento
+            // Render thumbnail.  
             var span = document.createElement('span');
             span.innerHTML = ['<img class="thumb" src="', 
-                              e.target.result, // image. base64
+                              e.target.result, // image. base64  //*formato de codificación(convierte todo a caracteres legibles)
                               '" title="', 
                               escape(theFile.name), // Is available since it is a closure
                               '"/>'
@@ -44,7 +44,7 @@
         })(f);
 
         // Read in the image file as a data URL.
-        reader.readAsDataURL(f);
+        reader.readAsDataURL(f); //*Se define la funcion anonima y se llama aqui (truco javascript)
       }
     }
 
